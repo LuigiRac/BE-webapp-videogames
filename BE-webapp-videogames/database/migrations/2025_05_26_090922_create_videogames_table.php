@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+
         Schema::create('videogames', function (Blueprint $table) {
             $table->id();
 
@@ -18,8 +19,8 @@ return new class extends Migration
             $table->string('author');
             $table->string('category');
             $table->string('console');
-            $table->decimal('price');
-            $table->longText('description');
+            $table->decimal('price', 8, 2);
+            $table->longText('description')->nullable();
 
             $table->timestamps();
         });
