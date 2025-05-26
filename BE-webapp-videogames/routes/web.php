@@ -30,6 +30,6 @@ Route::middleware(['auth', 'verified'])
     }
 );
 
-Route::resource('videogame', VideogameController::class)
-->middleware(['auth', 'verified']);
+Route::resource('videogame', VideogameController::class);
+// ->middleware(['auth', 'verified']);
 require __DIR__.'/auth.php';

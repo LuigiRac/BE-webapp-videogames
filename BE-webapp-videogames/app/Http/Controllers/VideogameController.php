@@ -29,9 +29,10 @@ class VideogameController extends Controller
     }
 
     // SHOW
-    public function show(string $id)
+    public function show(Videogame $videogame)
     {
-        //
+        // dd($videogame);
+        return view('videogames.show', compact('videogame'));
     }
 
     // EDIT

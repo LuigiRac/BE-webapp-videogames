@@ -1,6 +1,5 @@
 @extends('layouts.videogame')
 
-
 @section('title', 'Videogames')
     
 @section('content')
@@ -9,9 +8,10 @@
     <thead>
       <tr>
         <th scope="col">Nome</th>
-        <th scope="col">Autore</th>
-        <th scope="col">Categoria</th>
-        <th scope="col">Console</th>
+        <th scope="col">Sviluppatori</th>
+        <th scope="col">Genere</th>
+        <th scope="col">Data di Rilascio</th>
+        <th scope="col">Piattaforma</th>
         <th scope="col">Prezzo</th>
         <th scope="col">Descrizione</th>
         
@@ -21,9 +21,10 @@
         @foreach ($videogames as $videogame)
         <tr>
             <td>{{$videogame->title}}</td>
-            <td>{{$videogame->author}}</td>
-            <td>{{$videogame->category}}</td>
-            <td>{{$videogame->console}}</td>
+            <td>{{$videogame->developers}}</td>
+            <td>{{$videogame->genre}}</td>
+            <td>{{$videogame->release_date}}</td>
+            <td>{{$videogame->platform}}</td>
             <td>{{$videogame->price}}</td>
             <td>{{$videogame->description}}</td>
             

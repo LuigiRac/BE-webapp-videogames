@@ -16,9 +16,10 @@ return new class extends Migration
             $table->id();
 
             $table->string('title');
-            $table->string('author');
-            $table->string('category');
-            $table->string('console');
+            $table->string('developers');
+            $table->string('genre');
+            $table->date('release_date')->nullable();
+            $table->string('platform');
             $table->decimal('price', 8, 2);
             $table->longText('description')->nullable();
 
