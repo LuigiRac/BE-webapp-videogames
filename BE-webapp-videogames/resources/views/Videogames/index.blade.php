@@ -7,7 +7,7 @@
 <table class="table text-center">
     <thead>
       <tr>
-        <th scope="col">Nome</th>
+        <th scope="col">Titolo</th>
         <th scope="col">Sviluppatori</th>
         <th scope="col">Genere</th>
         <th scope="col">Data di Rilascio</th>
@@ -30,7 +30,7 @@
             
           
             <td>
-              <a class="btn btn-outline-primary" href="">Visualizza</a>
+              <a class="btn btn-outline-primary" href="{{route('videogame.show', $videogame->id)}}">Visualizza</a>
             </td>
         </tr>
         @endforeach
