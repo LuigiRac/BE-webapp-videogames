@@ -30,7 +30,7 @@
                     <li class="list-group-item"><strong>Prezzo:</strong> €{{$videogame->price}}</li>
                 </ul>
                 <div class="card-body text-center">
-                    <a href="#" class="btn btn-primary me-2">View Trailer</a>
+                    <a href="{{route('videogame.edit', $videogame)}}" class="btn btn-primary me-2">Modifica</a>
                     <a href="#" class="btn btn-outline-secondary">Add to Wishlist</a>
                 </div>
             </div>

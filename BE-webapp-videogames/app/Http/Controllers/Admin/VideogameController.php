@@ -56,15 +56,28 @@ class VideogameController extends Controller
     }
 
     // EDIT
-    public function edit(string $id)
+    public function edit(Videogame $videogame)
     {
-        //
+        return view('videogames.edit', compact('videogame'));
     }
 
     // UPDATE
-    public function update(Request $request, string $id)
+    public function update(Request $request, Videogame $videogame)
     {
-        //
+        $data = $request->all();
+        // dd($data);
+
+        $videogame->title = $data['title'];
+        $videogame->developers = $data['developers'];
+        $videogame->genre = $data['genre'];
+        $videogame->release_date = $data['release_date'];
+        $videogame->platform = $data['platform'];
+        $videogame->price = $data['price'];
+        $videogame->description = $data['description'];
+
+        $videogame->update();
+
+        return redirect()->route('videogame.show', $videogame);
     }
 
     // DESTROY
