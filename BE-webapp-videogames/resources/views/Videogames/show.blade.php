@@ -24,7 +24,7 @@
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item"><strong>Sviluppatori:</strong> {{$videogame->developers}}</li>
-                    <li class="list-group-item"><strong>Categoria:</strong> {{$videogame->genre}}</li>
+                    <li class="list-group-item"><strong>Genere:</strong> {{$videogame->genre}}</li>
                     <li class="list-group-item"><strong>Piattaforma:</strong> {{$videogame->platform}}</li>
                     <li class="list-group-item"><strong>Data di rilascio:</strong> {{$videogame->release_date}}</li>
                     <li class="list-group-item"><strong>Prezzo:</strong> €{{$videogame->price}}</li>
