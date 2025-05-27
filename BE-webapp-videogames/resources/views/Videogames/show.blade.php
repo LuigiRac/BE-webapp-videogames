@@ -4,18 +4,9 @@
 @section('content')
 
 <div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-4 col-sm-6 mb-4 d-flex justify-content-center">
-            <div class="card" style="width: 18rem;">
-                {{-- <img src="" class="card-img-top" alt=""> --}}
-            </div>
-        </div>
-    </div>
-
-    <div class="row justify-content-center">
+    <div class="row d-flex align-items-stretch">
         <div class="col-md-6 mb-4">
-            <div class="card">
-                <div class="card-header">
+            <div class="card h-100"> <div class="card-header">
                     Videogame N°: {{$videogame->id}}
                 </div>
                 <div class="card-body">
@@ -29,13 +20,54 @@
                     <li class="list-group-item"><strong>Data di rilascio:</strong> {{$videogame->release_date}}</li>
                     <li class="list-group-item"><strong>Prezzo:</strong> €{{$videogame->price}}</li>
                 </ul>
+
                 <div class="card-body text-center">
                     <a href="{{route('videogame.edit', $videogame)}}" class="btn btn-primary me-2">Modifica</a>
-                    <a href="#" class="btn btn-outline-secondary">Add to Wishlist</a>
+                    <button type="button" class="btn btn-danger " data-bs-toggle="modal" data-bs-target="#exampleModal">Elimina
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-sm-6 mb-4 d-flex justify-content-center">
+            <div class="card h-100" style="width: 18rem;"> {{-- <img src="" class="card-img-top" alt=""> --}}
+                <div class="card-body text-center">
+                    Spazio per Immagine / Dettagli Extra
                 </div>
             </div>
         </div>
     </div>
+</div>
+
+<div class="container text-center d-flex py-4 gap-3">
+    <div class="d-flex flex-column  gap-3 ">
+        <a class="btn btn-primary" href="{{route('videogame.create')}}">Aggiungi un Videogame</a>
+        <a class="btn btn-success" href="{{route('videogame.index', $videogame)}}">Torna alla Home</a>
+    </div>
+   
+
+   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+         <div class="modal-content">
+            <div class="modal-header">
+               <h1 class="modal-title fs-5" id="exampleModalLabel">Elimina</h1>
+               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+               Sei sicuro di voler eliminare il videogame?
+            </div>
+            <div class="modal-footer">
+               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+
+               <form action="{{route('videogame.destroy', $videogame)}}" method="POST">
+                  @csrf
+                  @method('DELETE')
+                  <input type="submit" class="btn btn-danger " value="Elimina">
+               </form>
+            </div>
+         </div>
+      </div>
+   </div>
 </div>
 
 @endsection

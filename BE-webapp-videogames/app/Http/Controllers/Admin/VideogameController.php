@@ -81,8 +81,10 @@ class VideogameController extends Controller
     }
 
     // DESTROY
-    public function destroy(string $id)
+    public function destroy(Videogame $videogame)
     {
-        //
+        $videogame->delete();
+
+        return redirect()->route('videogame.index');
     }
 }
