@@ -37,4 +37,7 @@
     </tbody>
 </table>
 
+<div class="container">
+    <a class="btn btn-primary" href="{{route('videogame.create')}}">Aggiungi un videogame</a>
+</div>
 @endsection
