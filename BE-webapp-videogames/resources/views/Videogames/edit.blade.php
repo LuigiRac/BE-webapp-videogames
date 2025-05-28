@@ -30,7 +30,13 @@
                         {{-- GENERE --}}
                         <div class="mb-3">
                             <label for="genre" class="form-label">Genere</label>
-                            <input type="text" class="form-control" id="genre" name="genre" value="{{$videogame->genre}}" required>
+                            
+                            <select name="genre_id" id="genre_id" class="form-select">
+                                @foreach ($genres as $genre)
+                                    <option value="{{$genre->id}}"{{$genre->genre_id == $genre->id ? 'selected' : ''}}>{{$genre->name}}</option>
+                                @endforeach
+                            </select>
+
                         </div>
 
                         {{-- DATA DI RILASCIO --}}

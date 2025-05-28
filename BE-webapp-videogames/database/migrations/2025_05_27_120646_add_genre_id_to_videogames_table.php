@@ -12,7 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('videogames', function (Blueprint $table) {
-            //
+
+            $table->dropColumn('genre');
+
+            $table->foreignId('genre_id')->constrained();
         });
     }
 
@@ -22,7 +25,12 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('videogames', function (Blueprint $table) {
-            //
+            
+            $table->string('genre');
+
+            $table->dropForeign('videogames_genre_id_foreign');
+
+            $table->dropColumn('genre_id');
         });
     }
 };

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Videogame;
+use App\Models\Genre;
 
 class VideogameController extends Controller
 {
@@ -20,7 +21,9 @@ class VideogameController extends Controller
     // CREATE
     public function create()
     {
-        return view('videogames.create');
+        $genres = genre::all();
+        // dd($genres);
+        return view('videogames.create', compact('genres'));
     }
 
     // STORE
@@ -34,7 +37,7 @@ class VideogameController extends Controller
 
             $newVideogame->title = $data['title'];
             $newVideogame->developers = $data['developers'];
-            $newVideogame->genre = $data['genre'];
+            $newVideogame->genre_id = $data['genre_id'];
             $newVideogame->release_date = $data['release_date'];
             $newVideogame->platform = $data['platform'];
             $newVideogame->price = $data['price'];
@@ -53,12 +56,15 @@ class VideogameController extends Controller
     {
         // dd($videogame);
         return view('videogames.show', compact('videogame'));
+        // dd($videogame->genre);
     }
 
     // EDIT
     public function edit(Videogame $videogame)
     {
-        return view('videogames.edit', compact('videogame'));
+        $genres = genre::all();
+        // dd($genres);
+        return view('videogames.edit', compact('videogame','genres'));
     }
 
     // UPDATE
@@ -69,7 +75,7 @@ class VideogameController extends Controller
 
         $videogame->title = $data['title'];
         $videogame->developers = $data['developers'];
-        $videogame->genre = $data['genre'];
+        $videogame->genre_id = $data['genre_id'];
         $videogame->release_date = $data['release_date'];
         $videogame->platform = $data['platform'];
         $videogame->price = $data['price'];

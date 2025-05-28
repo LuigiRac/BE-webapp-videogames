@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Videogame;
 
+
 class VideogameTableSeeder extends Seeder
 {
     /**
@@ -19,8 +20,8 @@ class VideogameTableSeeder extends Seeder
     [
         'title' => 'God of War',
         'developers' => 'Santa Monica Studio',
-        'genre' => 'Action-adventure', // Changed to genre
-        'release_date' => '2018-04-20', // Added release_date
+        'genre' => 'Action-adventure', 
+        'release_date' => '2018-04-20', 
         'platform' => 'PlayStation 4',
         'price' => 19.99,
         'description' => 'Un epico viaggio nel mondo della mitologia norrena con Kratos e suo figlio Atreus.',
@@ -71,12 +72,14 @@ class VideogameTableSeeder extends Seeder
         'description' => 'Gioca nei panni di un\'oca dispettosa che terrorizza gli abitanti di un pacifico villaggio.',
     ],
 ];
+
+
         foreach ($datas as $data) { 
             $newVideogame = new Videogame();
 
             $newVideogame->title = $data['title'];
             $newVideogame->developers = $data['developers'];
-            $newVideogame->genre = $data['genre'];
+            
             $newVideogame->release_date = $data['release_date'];
             $newVideogame->platform = $data['platform'];
             $newVideogame->price = $data['price'];

@@ -22,7 +22,7 @@
         <tr>
             <td>{{$videogame->title}}</td>
             <td>{{$videogame->developers}}</td>
-            <td>{{$videogame->genre}}</td>
+            <td>{{ $videogame->genre?->name }}</td>
             <td>{{$videogame->release_date}}</td>
             <td>{{$videogame->platform}}</td>
             <td>{{$videogame->price}}</td>
