@@ -55,8 +55,14 @@ class VideogameController extends Controller
     public function show(Videogame $videogame)
     {
         // dd($videogame);
-        return view('videogames.show', compact('videogame'));
+
+        $previousVideogameId = Videogame::where('id', '<', $videogame->id)->max('id');
+        $nextVideogameId = Videogame::where('id', '>', $videogame->id)->min('id');
+
+        return view('videogames.show', compact('videogame', 'previousVideogameId', 'nextVideogameId'));
         // dd($videogame->genre);
+
+        
     }
 
     // EDIT

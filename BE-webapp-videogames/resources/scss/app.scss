@@ -1,1 +1,13 @@
-@import '~bootstrap/scss/bootstrap'
+@import '~bootstrap/scss/bootstrap';
+
+
+//SHOW CSS
+.card-header-color {
+    background-color: #198753;
+    color: white;
+}
+
+.videogame-description {
+    min-height: 70px;
+    overflow-y: auto;
+}
