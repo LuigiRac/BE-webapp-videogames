@@ -42,7 +42,7 @@
                     <div>
                         <a href="{{route('videogame.edit', $videogame)}}" class="btn btn-primary me-2">Modifica</a>
                         <button type="button" class="btn btn-danger " data-bs-toggle="modal" data-bs-target="#exampleModal">Elimina
-                         </button>
+                        </button>
                     </div>
                     
                     {{-- FRECCIA AVANTI--}}
