@@ -8,7 +8,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header bg-primary text-white">
+                <div class="card-header bg-success text-white">
                     <h5 class="mb-0">Aggiungi un Nuovo Videogioco</h5>
                 </div>
                 <div class="card-body">
@@ -37,7 +37,6 @@
                                     <option value="{{$genre->id}}">{{$genre->name}}</option>
                                 @endforeach
                             </select>
-
                         </div>
 
                         {{-- DATA DI RILASCIO --}}
@@ -47,10 +46,28 @@
                         </div>
 
                         {{-- PIATTAFORMA --}}
-                        <div class="mb-3">
+                        {{-- <div class="mb-3">
                             <label for="platform" class="form-label">Piattaforma</label>
                             <input type="text" class="form-control" id="platform" name="platform" placeholder="" required>
+                        </div> --}}
+                        
+                        <div class="mb-3">
+                            <button type="button" id="togglePlatformsBtn">
+                                Piattaforme
+                            </button>
+                            
+                            <div id="platformsContainer">
+                                
+                                @foreach ($platforms as $platform)
+                                <div class="tag">
+                                    <input type="checkbox" name="platforms[]" value="{{ $platform->id }}" id="platform_{{ $platform->id }}">
+                                    <label for="platform_{{ $platform->id }}">{{ $platform->name }}</label>
+                                </div>
+                                 @endforeach
+
+                            </div>
                         </div>
+
 
                         {{-- PREZZO --}}
                         <div class="mb-3">
@@ -65,6 +82,7 @@
                         </div>
 
                         <button type="submit" class="btn btn-success">Salva Videogioco</button>
+                        <a class="btn btn-success" href="{{route('videogame.index')}}">Torna alla Home</a>
                     </form>
                 </div>
             </div>

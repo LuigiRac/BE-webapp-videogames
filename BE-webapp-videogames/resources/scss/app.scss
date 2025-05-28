@@ -11,3 +11,57 @@
     min-height: 70px;
     overflow-y: auto;
 }
+
+
+//CREATE CSS
+
+#togglePlatformsBtn {
+    background: none;
+    border: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 0;
+    color: #198753;
+    user-select: none;
+    margin-bottom: 0.5rem;
+}
+
+
+#togglePlatformsBtn::after {
+    content: "▼";
+    display: inline-block;
+    margin-left: 0.5rem;
+    transition: transform 0.3s ease;
+    font-size: 0.8rem;
+}
+
+
+#togglePlatformsBtn.open::after {
+    transform: rotate(180deg);
+}
+
+
+#platformsContainer {
+    display: none;
+    margin-top: 0.5rem;
+    /* grid ordinata e simmetrica */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 6px;
+    background: #fafafa;
+}
+
+
+#platformsContainer .tag {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}

@@ -3,10 +3,6 @@
     
 @section('content')
 
-<style>
-   
-</style>
-
 <div class="container mt-5">
     <div class="row d-flex align-items-stretch">
         <div class="col-md-6 mb-4">
@@ -20,7 +16,16 @@
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item"><strong>Sviluppatori:</strong> {{$videogame->developers}}</li>
                     <li class="list-group-item"><strong>Genere:</strong> {{$videogame->genre?->name}}</li>
-                    <li class="list-group-item"><strong>Piattaforma:</strong> {{$videogame->platform}}</li>
+
+                    <li class="list-group-item"><strong>Piattaforma:</strong>
+                        @forelse($videogame->platforms as $platform)
+                           <span class="badge btn-primary" style="background-color: {{$platform->color}}"> {{$paltform->name}}
+
+                           </span>
+                           @empty In aggiornamento
+                           @endforelse
+                    </li>
+
                     <li class="list-group-item"><strong>Data di rilascio:</strong> {{$videogame->release_date}}</li>
                     <li class="list-group-item"><strong>Prezzo:</strong> €{{$videogame->price}}</li>
                 </ul>
@@ -101,6 +106,7 @@
          </div>
       </div>
    </div>
+
 </div>
 
 @endsection

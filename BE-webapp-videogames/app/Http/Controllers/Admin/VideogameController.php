@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Videogame;
 use App\Models\Genre;
+use App\Models\Platform;
 
 class VideogameController extends Controller
 {
@@ -23,7 +24,8 @@ class VideogameController extends Controller
     {
         $genres = genre::all();
         // dd($genres);
-        return view('videogames.create', compact('genres'));
+        $platforms = platform::all();
+        return view('videogames.create', compact('genres', 'platforms'));
     }
 
     // STORE
@@ -46,6 +48,8 @@ class VideogameController extends Controller
             // dd($newVideogame);
 
            $newVideogame->save();
+
+           $newVideogame->platforms()->attach($data['platforms']);
 
            return redirect()->route('videogame.show', $newVideogame);
        

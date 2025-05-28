@@ -13,6 +13,6 @@ class Videogame extends Model
 
     public function platforms(){
 
-        return $this->belongsToMany(Platforms::class);
+        return $this->belongsToMany(Platform::class);
     }
 }

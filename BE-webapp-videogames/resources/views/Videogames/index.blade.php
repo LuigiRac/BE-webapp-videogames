@@ -11,8 +11,8 @@
       <tr>
         <th scope="col">Titolo</th>
         <th scope="col">Sviluppatori</th>
-        <th scope="col">Genere</th>
-        <th scope="col">Data di Rilascio</th>
+        {{-- <th scope="col">Genere</th> --}}
+        {{-- <th scope="col">Data di Rilascio</th> --}}
         <th scope="col">Piattaforma</th>
         <th scope="col">Prezzo</th>
         {{-- <th scope="col">Descrizione</th> --}}
@@ -24,8 +24,8 @@
         <tr>
             <td>{{$videogame->title}}</td>
             <td>{{$videogame->developers}}</td>
-            <td>{{$videogame->genre?->name}}</td>
-            <td>{{$videogame->release_date}}</td>
+            {{-- <td>{{$videogame->genre?->name}}</td> --}}
+            {{-- <td>{{$videogame->release_date}}</td> --}}
             <td>{{$videogame->platform}}</td>
             <td>€ {{$videogame->price}}</td>
             {{-- <td>{{$videogame->description}}</td> --}}
