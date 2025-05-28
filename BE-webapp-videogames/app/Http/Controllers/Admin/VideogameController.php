@@ -15,8 +15,9 @@ class VideogameController extends Controller
     {
         $videogames = Videogame::All();
         // dd($videogames);
+        $platforms = platform::all();
 
-        return view('videogames.index', compact('videogames'));
+        return view('videogames.index', compact('videogames', 'platforms'));
     }
 
     // CREATE

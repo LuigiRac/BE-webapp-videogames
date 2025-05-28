@@ -26,7 +26,13 @@
             <td>{{$videogame->developers}}</td>
             {{-- <td>{{$videogame->genre?->name}}</td> --}}
             {{-- <td>{{$videogame->release_date}}</td> --}}
-            <td>{{$videogame->platform}}</td>
+            <td>
+               @forelse($videogame->platforms as $platform)
+                  <span class="badge btn-primary" style="background-color: {{$platform->color}}"> {{$platform->name}}
+                  </span>
+                  @empty In aggiornamento
+               @endforelse
+            </td>
             <td>€ {{$videogame->price}}</td>
             {{-- <td>{{$videogame->description}}</td> --}}
             
