@@ -19,7 +19,7 @@
 
                     <li class="list-group-item"><strong>Piattaforma:</strong>
                         @forelse($videogame->platforms as $platform)
-                           <span class="badge btn-primary" style="background-color: {{$platform->color}}"> {{$paltform->name}}
+                           <span class="badge btn-primary" style="background-color: {{$platform->color}}"> {{$platform->name}}
 
                            </span>
                            @empty In aggiornamento

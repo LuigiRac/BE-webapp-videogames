@@ -41,7 +41,6 @@ class VideogameController extends Controller
             $newVideogame->developers = $data['developers'];
             $newVideogame->genre_id = $data['genre_id'];
             $newVideogame->release_date = $data['release_date'];
-            $newVideogame->platform = $data['platform'];
             $newVideogame->price = $data['price'];
             $newVideogame->description = $data['description'];
             
@@ -49,7 +48,11 @@ class VideogameController extends Controller
 
            $newVideogame->save();
 
-           $newVideogame->platforms()->attach($data['platforms']);
+           
+           if($request->has('platforms')){
+
+            $newVideogame->platforms()->attach($data['platforms']);
+        }
 
            return redirect()->route('videogame.show', $newVideogame);
        
@@ -74,7 +77,11 @@ class VideogameController extends Controller
     {
         $genres = genre::all();
         // dd($genres);
-        return view('videogames.edit', compact('videogame','genres'));
+
+        $platforms = platform::all();
+        //dd($platforms);
+        
+        return view('videogames.edit', compact('videogame','genres', 'platforms'));
     }
 
     // UPDATE
@@ -87,11 +94,19 @@ class VideogameController extends Controller
         $videogame->developers = $data['developers'];
         $videogame->genre_id = $data['genre_id'];
         $videogame->release_date = $data['release_date'];
-        $videogame->platform = $data['platform'];
+        // $videogame->platform = $data['platform'];
         $videogame->price = $data['price'];
         $videogame->description = $data['description'];
 
         $videogame->update();
+
+        if($request->has('platforms')){
+
+            $videogame->platforms()->sync($data['platforms']);
+        }else {
+            $videogame->platforms()->detach();
+        }
+        
 
         return redirect()->route('videogame.show', $videogame);
     }

@@ -46,11 +46,6 @@
                         </div>
 
                         {{-- PIATTAFORMA --}}
-                        {{-- <div class="mb-3">
-                            <label for="platform" class="form-label">Piattaforma</label>
-                            <input type="text" class="form-control" id="platform" name="platform" placeholder="" required>
-                        </div> --}}
-                        
                         <div class="mb-3">
                             <button type="button" id="togglePlatformsBtn">
                                 Piattaforme
@@ -60,8 +55,8 @@
                                 
                                 @foreach ($platforms as $platform)
                                 <div class="tag">
-                                    <input type="checkbox" name="platforms[]" value="{{ $platform->id }}" id="platform_{{ $platform->id }}">
-                                    <label for="platform_{{ $platform->id }}">{{ $platform->name }}</label>
+                                    <input type="checkbox" name="platforms[]" value="{{ $platform->id }}" id="{{ $platform->id }}">
+                                    <label for="{{ $platform->id }}">{{ $platform->name }}</label>
                                 </div>
                                  @endforeach
 
@@ -80,9 +75,12 @@
                             <label for="description" class="form-label">Descrizione</label>
                             <textarea class="form-control" id="description" name="description" rows="5" placeholder="Una breve descrizione del gioco..."></textarea>
                         </div>
-
-                        <button type="submit" class="btn btn-success">Salva Videogioco</button>
-                        <a class="btn btn-success" href="{{route('videogame.index')}}">Torna alla Home</a>
+                        
+                        <div class="d-flex justify-content-between">
+                            <button type="submit" class="btn btn-success">Salva Videogioco</button>
+                            <a class="btn btn-success" href="{{route('videogame.index')}}">Torna alla Home</a>
+                        </div>
+                        
                     </form>
                 </div>
             </div>

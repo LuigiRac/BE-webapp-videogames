@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Videogame;
 use App\Models\Genre;
+use App\Models\Platform;
 use Illuminate\Support\Str;
 
 
@@ -83,14 +84,15 @@ class VideogameTableSeeder extends Seeder
             $genre = Genre::firstOrCreate(
                 ['name' => $data['genre']],
                 ['slug' => Str::slug($data['genre'])]
-);
+            );
+
             $newVideogame = new Videogame();
 
             $newVideogame->title = $data['title'];
             $newVideogame->developers = $data['developers'];
             $newVideogame->genre_id =$genre->id;
             $newVideogame->release_date = $data['release_date'];
-            $newVideogame->platform = $data['platform'];
+            // $newVideogame->platform_id = $platform->id;
             $newVideogame->price = $data['price'];
             $newVideogame->description = $data['description'];
            

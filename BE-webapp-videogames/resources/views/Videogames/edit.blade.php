@@ -46,9 +46,26 @@
                         </div>
 
                         {{-- PIATTAFORMA --}}
-                        <div class="mb-3">
+                        {{-- <div class="mb-3">
                             <label for="platform" class="form-label">Piattaforma</label>
                             <input type="text" class="form-control" id="platform" name="platform" value="{{$videogame->platform}}" required>
+                        </div> --}}
+
+                        <div class="mb-3">
+                            <button type="button" id="togglePlatformsBtn">
+                                Piattaforme
+                            </button>
+                            
+                            <div id="platformsContainer">
+                                
+                                @foreach ($platforms as $platform)
+                                <div class="tag">
+                                    <input type="checkbox" name="platforms[]" value="{{ $platform->id }}" id="{{ $platform->id }}" {{$videogame->platforms->contains($platform->id) ? 'checked' : ''}}>
+                                    <label for="{{ $platform->id }}">{{ $platform->name }}</label>
+                                </div>
+                                 @endforeach
+
+                            </div>
                         </div>
 
                         {{-- PREZZO --}}

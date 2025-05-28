@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('developers')->nullable();
             $table->string('genre');
             $table->date('release_date')->nullable();
-            $table->string('platform');
+            
             $table->decimal('price', 8, 2);
             $table->longText('description')->nullable();
 
