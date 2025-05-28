@@ -33,7 +33,7 @@
                             
                             <select name="genre_id" id="genre_id" class="form-select">
                                 @foreach ($genres as $genre)
-                                    <option value="{{$genre->id}}"{{$genre->genre_id == $genre->id ? 'selected' : ''}}>{{$genre->name}}</option>
+                                    <option value="{{$genre->id}}"{{$videogame->genre_id == $genre->id ? 'selected' : ''}}>{{$genre->name}}</option>
                                 @endforeach
                             </select>
 

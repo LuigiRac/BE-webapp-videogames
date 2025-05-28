@@ -13,7 +13,7 @@
 </head>
 <body>
 
-    <div class="container">
+    <div class="container text-center m-3">
         <h1>
             @yield('title')
         </h1>

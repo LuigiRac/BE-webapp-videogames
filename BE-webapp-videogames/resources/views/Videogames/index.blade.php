@@ -1,6 +1,8 @@
 @extends('layouts.videogame')
 
-@section('title', 'Videogames')
+  @section('title', 'Videogames')
+
+
     
 @section('content')
 
@@ -22,15 +24,15 @@
         <tr>
             <td>{{$videogame->title}}</td>
             <td>{{$videogame->developers}}</td>
-            <td>{{ $videogame->genre?->name }}</td>
+            <td>{{$videogame->genre?->name}}</td>
             <td>{{$videogame->release_date}}</td>
             <td>{{$videogame->platform}}</td>
-            <td>{{$videogame->price}}</td>
+            <td>€ {{$videogame->price}}</td>
             {{-- <td>{{$videogame->description}}</td> --}}
             
           
             <td>
-              <a class="btn btn-outline-primary" href="{{route('videogame.show', $videogame->id)}}">Visualizza</a>
+              <a class="btn btn-success" href="{{route('videogame.show', $videogame->id)}}">Visualizza</a>
             </td>
 
             <td>
