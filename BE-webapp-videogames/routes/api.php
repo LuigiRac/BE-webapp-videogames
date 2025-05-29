@@ -9,4 +9,8 @@ use App\Http\Controllers\Api\VideogameController;
 //     return $request->user();
 // })->middleware('auth:sanctum');
 
+//INDEX
 Route::get('videogames', [VideogameController::class, 'index']);
+
+//SHOW
+Route::get('videogames/{videogame}', [VideogameController::class, 'show']);
