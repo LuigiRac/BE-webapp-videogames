@@ -17,7 +17,7 @@ class VideogameController extends Controller
         return response()->json(
             [
                 'success'=>true,
-                'data'=>$videogames
+                'data'=>$videogame
             ]
         );
     }
@@ -30,7 +30,7 @@ class VideogameController extends Controller
         return response()->json(
             [
                 'success'=>true,
-                'data'=>$videogames
+                'data'=>$videogame
             ]
         );
     }
