@@ -17,7 +17,20 @@ class VideogameController extends Controller
         return response()->json(
             [
                 'success'=>true,
-                'data'=>'tutto funziona bene'
+                'data'=>$videogames
+            ]
+        );
+    }
+
+    public function show(Videogame $videogame){
+
+        $videogame->load('genre', 'platforms');
+        // dd($videogame);
+
+        return response()->json(
+            [
+                'success'=>true,
+                'data'=>$videogames
             ]
         );
     }
