@@ -11,7 +11,7 @@
                     <h5 class="mb-0">Modifica un Videogioco</h5>
                 </div>
                 <div class="card-body">
-                    <form action="{{route('videogame.update', $videogame)}}" method="POST"> 
+                    <form action="{{route('videogame.update', $videogame)}}" method="POST" enctype="multipart/form-data"> 
                         @csrf 
                         @method('PUT')
 
@@ -46,11 +46,6 @@
                         </div>
 
                         {{-- PIATTAFORMA --}}
-                        {{-- <div class="mb-3">
-                            <label for="platform" class="form-label">Piattaforma</label>
-                            <input type="text" class="form-control" id="platform" name="platform" value="{{$videogame->platform}}" required>
-                        </div> --}}
-
                         <div class="mb-3">
                             <button type="button" id="togglePlatformsBtn">
                                 Piattaforme
@@ -78,6 +73,18 @@
                         <div class="mb-3">
                             <label for="description" class="form-label">Descrizione</label>
                             <textarea class="form-control" id="description" name="description" rows="5">{{$videogame->description}}</textarea>
+                        </div>
+
+                        {{-- IMMAGINE --}}
+                        <div class="form-group mb-3">
+                            <label for="image">Carica un'immagine:</label>
+                            <input type="file" name="image" id="image">
+                            
+                            @if ($videogame->image)
+                <div class="card h-100"> 
+                    <img src="{{asset('storage/' . $videogame->image)}}" class="card-img-top" alt="image" >
+                </div>
+            @endif
                         </div>
 
                         <button type="submit" class="btn btn-success">Salva Modifiche</button>

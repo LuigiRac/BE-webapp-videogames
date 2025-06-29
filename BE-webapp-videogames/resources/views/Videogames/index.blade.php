@@ -1,4 +1,5 @@
-@extends('layouts.videogame')
+@extends('layouts.app')
+
 
   @section('title', 'Videogames')
 
@@ -33,7 +34,14 @@
                   @empty In aggiornamento
                @endforelse
             </td>
-            <td>€ {{$videogame->price}}</td>
+
+            <td>
+               @if($videogame->price == 0) 
+                  <span> Free-to-Play
+                  </span>
+                  @else €{{$videogame->price}}
+               @endif
+            </td>
             {{-- <td>{{$videogame->description}}</td> --}}
             
           

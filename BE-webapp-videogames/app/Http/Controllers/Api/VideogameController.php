@@ -11,13 +11,13 @@ class VideogameController extends Controller
 {
     public function index(){
 
-        $videogames = Videogame::with('genre')->get();
+        $videogames = Videogame::with('genre', 'platforms')->get();
         // dd($videogames);
 
         return response()->json(
             [
                 'success'=>true,
-                'data'=>$videogame
+                'data'=>$videogames
             ]
         );
     }

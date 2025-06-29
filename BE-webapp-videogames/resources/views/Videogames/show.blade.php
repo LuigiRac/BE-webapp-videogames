@@ -7,7 +7,7 @@
     <div class="row d-flex align-items-stretch">
         <div class="col-md-6 mb-4">
             <div class="card h-100"> <div class="card-header card-header-color">
-                    Videogame N°: {{$videogame->id}}
+                    Videogame: {{$videogame->title}}
                 </div>
                 <div class="card-body">
                     <h5 class="card-title">{{$videogame->title}}</h5>
@@ -27,7 +27,12 @@
                     </li>
 
                     <li class="list-group-item"><strong>Data di rilascio:</strong> {{$videogame->release_date}}</li>
-                    <li class="list-group-item"><strong>Prezzo:</strong> €{{$videogame->price}}</li>
+                    <li class="list-group-item"><strong>Prezzo:</strong>
+                        @if($videogame->price == 0) 
+                        <span> Free-to-Play </span>
+                         @else €{{$videogame->price}}
+                         @endif
+                    </li>
                 </ul>
 
                 <div class="card-body d-flex justify-content-between align-items-center ">
@@ -65,13 +70,15 @@
             </div>
         </div>
 
-        <div class="col-md-4 col-sm-6 mb-4 d-flex justify-content-center">
-            <div class="card h-100" style="width: 18rem;"> {{-- <img src="" class="card-img-top" alt=""> --}}
-                <div class="card-body text-center">
-                    Spazio per Immagine / Dettagli Extra
+        {{-- IMMAGINE --}}
+        <div class="col-md-4 col-sm-6 mb-4 d-flex justify-content-center align-items-start">
+            @if ($videogame->image)
+                <div class="card">
+                   <img src="{{ asset('storage/' . $videogame->image) }}" alt="image" class="img-fluid img-mod">
                 </div>
-            </div>
+            @endif
         </div>
+
     </div>
 </div>
 

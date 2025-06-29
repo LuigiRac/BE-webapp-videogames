@@ -6,7 +6,7 @@ import.meta.glob([
     '../img/**'
 ]);
 
-// JS PER LA CREATE
+// JS PER LA SHOW
 document.addEventListener('DOMContentLoaded', () => {
     const toggleBtn = document.getElementById('togglePlatformsBtn');
     const platformsContainer = document.getElementById('platformsContainer');

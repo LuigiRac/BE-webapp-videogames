@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
 use App\Models\Videogame;
 use App\Models\Genre;
 use App\Models\Platform;
@@ -13,9 +15,9 @@ class VideogameController extends Controller
     // INDEX
     public function index()
     {
-        $videogames = Videogame::All();
+        $videogames = Videogame::all();
         // dd($videogames);
-        $platforms = platform::all();
+        $platforms = Platform::all();
 
         return view('videogames.index', compact('videogames', 'platforms'));
     }
@@ -23,9 +25,9 @@ class VideogameController extends Controller
     // CREATE
     public function create()
     {
-        $genres = genre::all();
+        $genres = Genre::all();
         // dd($genres);
-        $platforms = platform::all();
+        $platforms = Platform::all();
         return view('videogames.create', compact('genres', 'platforms'));
     }
 
@@ -36,7 +38,7 @@ class VideogameController extends Controller
 
         $data = $request->all();
         // dd($data);
-        $newVideogame = new Videogame();
+            $newVideogame = new Videogame();
 
             $newVideogame->title = $data['title'];
             $newVideogame->developers = $data['developers'];
@@ -47,8 +49,15 @@ class VideogameController extends Controller
             
             // dd($newVideogame);
 
-           $newVideogame->save();
+            if(array_key_exists('image', $data)) {
+                dump('immagine esiste');
+                $img_game = Storage::putFile('videogame', $data['image']);
 
+                $newVideogame->image = $img_game;
+            }
+
+
+            $newVideogame->save();
            
            if($request->has('platforms')){
 
@@ -76,10 +85,10 @@ class VideogameController extends Controller
     // EDIT
     public function edit(Videogame $videogame)
     {
-        $genres = genre::all();
+        $genres = Genre::all();
         // dd($genres);
 
-        $platforms = platform::all();
+        $platforms = Platform::all();
         //dd($platforms);
         
         return view('videogames.edit', compact('videogame','genres', 'platforms'));
@@ -99,6 +108,19 @@ class VideogameController extends Controller
         $videogame->price = $data['price'];
         $videogame->description = $data['description'];
 
+
+    if ($request->hasFile('image')) {
+        
+    if ($videogame->image && Storage::exists($videogame->image)) {
+        Storage::delete($videogame->image);
+    }
+
+    
+    $img_game = Storage::putFile('videogame', $request->file('image'));
+    $videogame->image = $img_game;
+
+    }
+
         $videogame->update();
 
         if($request->has('platforms')){
@@ -114,9 +136,18 @@ class VideogameController extends Controller
 
     // DESTROY
     public function destroy(Videogame $videogame)
-    {
-        $videogame->delete();
-
-        return redirect()->route('videogame.index');
+{
+    
+    if ($videogame->image && Storage::exists($videogame->image)) {
+        Storage::delete($videogame->image);
     }
+
+    
+    $videogame->platforms()->detach();
+
+   
+    $videogame->delete();
+
+    return redirect()->route('videogame.index');
+}
 }

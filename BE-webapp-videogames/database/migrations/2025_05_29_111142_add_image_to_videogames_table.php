@@ -11,14 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('platforms', function (Blueprint $table) {
-            $table->id();
-
-            $table->string('name');
-            $table->text('color');
+        Schema::table('videogames', function (Blueprint $table) {
             
-
-            $table->timestamps();
+            $table->text('image')->nullable();
         });
     }
 
@@ -27,6 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('platforms');
+        Schema::table('videogames', function (Blueprint $table) {
+            $table->dropColumn('image');
+        });
     }
 };

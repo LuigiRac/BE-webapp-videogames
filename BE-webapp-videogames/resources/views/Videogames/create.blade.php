@@ -12,7 +12,7 @@
                     <h5 class="mb-0">Aggiungi un Nuovo Videogioco</h5>
                 </div>
                 <div class="card-body">
-                    <form action="{{route('videogame.store')}}" method="POST"> 
+                    <form action="{{route('videogame.store')}}" method="POST" enctype="multipart/form-data"> 
                         @csrf 
 
                         {{-- TITOLO --}}
@@ -63,7 +63,6 @@
                             </div>
                         </div>
 
-
                         {{-- PREZZO --}}
                         <div class="mb-3">
                             <label for="price" class="form-label">Prezzo (€)</label>
@@ -76,10 +75,18 @@
                             <textarea class="form-control" id="description" name="description" rows="5" placeholder="Una breve descrizione del gioco..."></textarea>
                         </div>
                         
-                        <div class="d-flex justify-content-between">
+                        {{-- IMMAGINE --}}
+                        <div class="form-group mb-3">
+                            <label for="image">Carica un'immagine:</label>
+                            <input type="file" name="image" id="image">
+                        </div>
+
+                        <div class="d-flex justify-content-between mb-3">
                             <button type="submit" class="btn btn-success">Salva Videogioco</button>
                             <a class="btn btn-success" href="{{route('videogame.index')}}">Torna alla Home</a>
                         </div>
+
+                         
                         
                     </form>
                 </div>
